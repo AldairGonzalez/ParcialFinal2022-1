@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Registro Usuario
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card-content>
+    <ion-grid class="grid">
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Nombre:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><input type="text" class="cajas"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Apellido:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><input type="text" class="cajas"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Correo:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><input type="email" class="cajas"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Contraseña:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><input type="password" class="cajas"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div class="buttonGuardar"><ion-button>Guardar</ion-button></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-content>
