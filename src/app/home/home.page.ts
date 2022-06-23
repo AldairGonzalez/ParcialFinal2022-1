@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Concierto } from '../models';
+import { FirestoreService } from '../services/firestore.service';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  conciertos: Concierto[] = [];
+  private enlace = "Conciertos/";
+  constructor(public database: FirestoreService) {}
 
-  constructor() {}
+  ngOnInit() {
+    this.ListarConciertos();
+  }
 
+  ListarConciertos(){
+    this.database.ListarDocumento<Concierto>(this.enlace).subscribe(res => {
+    this.conciertos = res;
+    });
+  }
 }

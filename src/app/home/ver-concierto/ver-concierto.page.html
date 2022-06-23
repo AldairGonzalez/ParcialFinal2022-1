@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{concierto.concierto}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card-content>
+    <ion-grid class="grid">
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Valor Boleta:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="cajas"> $ {{concierto.valorBoleta}}</ion-label></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Valor Total:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="cajas"> $ {{concierto.valorTotal}}</ion-label></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Fecha:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="cajas">{{concierto.fecha}}</ion-label></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="6" sizeMd="6" sizeXs="6">
+          <div class="buttonGuardar"><ion-button [routerLink]="['home/ver-concierto/editar-concierto', concierto.id]">Editar</ion-button></div>
+        </ion-col>
+        <ion-col sizeLg="6" sizeMd="6" sizeXs="6">
+          <div class="buttonGuardar"><ion-button>Eliminar</ion-button></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-content>

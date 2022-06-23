@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear Concierto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card-content>
+    <ion-grid class="grid">
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Nombre del concierto:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><input [(ngModel)]="conciertoNuevo.concierto" type="text" class="cajas"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Valor Boletas:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><input [(ngModel)]="conciertoNuevo.valorBoleta" type="number" min="1" class="cajas"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Valor concierto:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><input [(ngModel)]="conciertoNuevo.valorTotal" type="number" min="1" class="cajas"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Fecha del concierto:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><input [(ngModel)]="conciertoNuevo.fecha" type="Date" min="" class="cajas"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div class="buttonGuardar"><ion-button (click)="crearConcierto()">Guardar</ion-button></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-content>

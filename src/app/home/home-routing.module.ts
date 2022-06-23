@@ -6,6 +6,14 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
+  },
+  {
+    path: 'crear-concierto',
+    loadChildren: () => import('./crear-concierto/crear-concierto.module').then( m => m.CrearConciertoPageModule)
+  },
+  {
+    path: 'ver-concierto/:conciertoId',
+    loadChildren: () => import('./ver-concierto/ver-concierto.module').then( m => m.VerConciertoPageModule)
   }
 ];
 
