@@ -9,18 +9,25 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   styleUrls: ['./ver-concierto.page.scss'],
 })
 export class VerConciertoPage implements OnInit {
-  concierto: Concierto;
+  concierto: Concierto={
+    id: '',
+    concierto: '',
+    valorBoleta: 0,
+    valorTotal: 0,
+    fecha: undefined
+  };
   id: string;
   private enlace = "Conciertos/";
   constructor(public database: FirestoreService, public activate: ActivatedRoute) { }
   ngOnInit() {
-    this.id = this.activate.snapshot.paramMap.get('conciertoId');
+    this.id =  this.activate.snapshot.params['conciertoId'];
     this.ObtenerConcierto();
   }
 
   ObtenerConcierto(){
   this.database.ObtenerDocumento<Concierto>(this.enlace, this.id).subscribe(res => {
     this.concierto = res;
+  console.log("El Objeto es", this.concierto);
    });
   }
 
