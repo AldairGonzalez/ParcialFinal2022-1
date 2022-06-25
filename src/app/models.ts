@@ -12,4 +12,5 @@ export interface Usuario{
   apellido:string;
   correo:string;
   pass: string;
+  image: string;
 }
