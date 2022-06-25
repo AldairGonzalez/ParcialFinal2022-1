@@ -15,7 +15,7 @@ export class CrearConciertoPage implements OnInit {
     concierto: '',
     valorBoleta: null,
     valorTotal: null,
-    fecha: null,
+    fecha: new Date(),
   };
   private enlace = "Conciertos/";
 
