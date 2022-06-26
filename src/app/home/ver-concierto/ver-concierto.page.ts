@@ -27,7 +27,6 @@ export class VerConciertoPage implements OnInit {
   ObtenerConcierto(){
   this.database.ObtenerDocumento<Concierto>(this.enlace, this.id).subscribe(res => {
     this.concierto = res;
-  console.log("El Objeto es", this.concierto);
    });
   }
 

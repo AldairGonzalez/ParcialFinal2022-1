@@ -20,7 +20,7 @@
           <div><ion-label class="subtitulos">Correo:</ion-label></div>
         </ion-col>
         <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
-          <div><input type="text" class="cajas"></div>
+          <div><input [(ngModel)]="user.correo" type="text" class="cajas"></div>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -28,12 +28,12 @@
           <div><ion-label class="subtitulos">Contraseña:</ion-label></div>
         </ion-col>
         <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
-          <div><input type="password" class="cajas"></div>
+          <div><input [(ngModel)]="user.pass" type="password" class="cajas"></div>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
-          <div class="buttonGuardar"><ion-button>Ingresar</ion-button></div>
+          <div class="buttonGuardar"><ion-button (click)="ingresar()">Ingresar</ion-button></div>
         </ion-col>
       </ion-row>
     </ion-grid>

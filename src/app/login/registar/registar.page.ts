@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { Usuario } from 'src/app/models';
+import { FirebaseauthService } from 'src/app/services/firebaseauth.service';
 import { FirestorageService } from 'src/app/services/firestorage.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
@@ -12,7 +13,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 export class RegistarPage implements OnInit {
   usuario:Usuario = {
-    id:this.database.ObtenerId(),
+    id:'',
     nombre:'',
     apellido:'',
     correo:'',
@@ -22,14 +23,18 @@ export class RegistarPage implements OnInit {
   loading:any;
   private enlace = "Usuarios/";
 
-  constructor(public database: FirestoreService, public alert: AlertController, public router:Router, public fireStorage: FirestorageService, public loadingController: LoadingController) { }
+  constructor(public database: FirestoreService, public alert: AlertController, public router:Router, public fireStorage: FirestorageService, public loadingController: LoadingController, public auth: FirebaseauthService) { }
 
   ngOnInit() {
   }
 
-  registrar(){
+  async registrar(){
     this.presentLoading();
+    await this.auth.registrar(this.usuario.correo, this.usuario.pass);
+    const idUser = await this.auth.obtenerId();
+    this.usuario.id = idUser;
     this.database.CrearDocumento(this.usuario,this.enlace, this.usuario.id);
+    this.auth.logout();
     this.alertaCreacion();
   }
 
