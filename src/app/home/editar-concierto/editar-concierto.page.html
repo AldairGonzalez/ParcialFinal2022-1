@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home/ver-concierto"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar Concierto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card-content>
+    <ion-grid class="grid">
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Nombre del concierto:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><input [(ngModel)]="concierto.concierto" type="text" value="concierto.concierto" class="cajas"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Valor Boletas:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><input [(ngModel)]="concierto.valorBoleta" type="number" value="concierto.valorBoleta" min="1" class="cajas"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Valor concierto:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><input [(ngModel)]="concierto.valorTotal" type="number" value="concierto.valorTotal" min="1" class="cajas"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Fecha del concierto:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><input [(ngModel)]="concierto.fecha" type="Date" min="" value="concierto.fecha" class="cajas"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div class="buttonGuardar"><ion-button (click)="editarConcierto()">Guardar</ion-button></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-content>

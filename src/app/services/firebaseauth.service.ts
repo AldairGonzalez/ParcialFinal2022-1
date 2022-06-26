@@ -6,7 +6,9 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class FirebaseauthService {
 
-  constructor(public auth:AngularFireAuth) { }
+  constructor(public auth:AngularFireAuth) {
+      this.obtenerId();
+   }
 
   login(email: string, password: string){
    return this.auth.signInWithEmailAndPassword(email, password);
@@ -27,5 +29,26 @@ export class FirebaseauthService {
       }else{
         return user.uid;
       }
+   }
+
+   estadoAutenticacion(){
+    return this.auth.authState;
+   }
+
+   async actualizarUsuario(email:string, pass: string){
+    const user = await this.auth.currentUser;
+    if (user === null){
+      return null;
+    }else{
+  
+      if (email) {
+        await user.updateEmail(email);
+      }
+  
+      if (pass) {
+        await user.updatePassword(pass);
+      }
+      return true;
+    }
    }
 }
