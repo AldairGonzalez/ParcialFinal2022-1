@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Concierto } from 'src/app/models';
+import { FirebaseauthService } from 'src/app/services/firebaseauth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
@@ -15,11 +16,18 @@ export class CrearConciertoPage implements OnInit {
     concierto: '',
     valorBoleta: null,
     valorTotal: null,
-    fecha: new Date(),
+    fecha: new Date()
   };
-  private enlace = "Conciertos/";
 
-  constructor(public database: FirestoreService, public alert: AlertController, public router:Router) { }
+  private usuarioId:string = '';
+
+  constructor(public database: FirestoreService, public auth:FirebaseauthService, public alert: AlertController, public router:Router) {
+    this.auth.estadoAutenticacion().subscribe(res => {
+      if (res !== null){
+        this.usuarioId = res.uid;
+      }
+    });
+   }
 
   ngOnInit() {
   }
@@ -40,8 +48,9 @@ export class CrearConciertoPage implements OnInit {
     await alertaCreacionMensaje.present();
   }
 
-  crearConcierto(){
-    this.database.CrearDocumento(this.conciertoNuevo,this.enlace,this.conciertoNuevo.id);
+ async crearConcierto(){
+    const url = "Usuarios/"+ this.usuarioId + "/Conciertos";
+    this.database.CrearDocumento(this.conciertoNuevo,url, this.conciertoNuevo.id)
     this.alertaCreacion();
   }
 }
