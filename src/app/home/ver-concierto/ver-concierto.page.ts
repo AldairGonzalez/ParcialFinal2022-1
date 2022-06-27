@@ -16,7 +16,10 @@ export class VerConciertoPage implements OnInit {
     concierto: '',
     valorBoleta: 0,
     valorTotal: 0,
-    fecha: undefined
+    fecha: undefined,
+    hay:0,
+    faltante:0,
+    ganancias:0
   };
   id: string;
   private enlace = "Conciertos/";
