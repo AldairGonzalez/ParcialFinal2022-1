@@ -41,6 +41,11 @@ export class FirestoreService {
     return respuesta.valueChanges();
   }
 
+  async ListarSubColeccionesLevel2<tipo>(usuarioId:string, conciertoId:string){
+    const respuesta = this.database.collection<tipo>(`Usuarios/${usuarioId}/Conciertos/${conciertoId}/Participantes`);
+    return respuesta.valueChanges();
+  }
+
   async ObtenerSubColeccion<tipo>(usuarioId:string, docId:string){
     const respuesta = this.database.collection<tipo>(`Usuarios/${usuarioId}/Conciertos`);
     return respuesta.doc(docId).valueChanges();

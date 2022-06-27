@@ -26,7 +26,12 @@ const routes: Routes = [
   {
     path: 'editar-concierto/:conciertoId',
     loadChildren: () => import('./editar-concierto/editar-concierto.module').then( m => m.EditarConciertoPageModule)
+  },
+  {
+    path: 'gestion-concierto/:conciertoId',
+    loadChildren: () => import('./gestion-concierto/gestion-concierto.module').then( m => m.GestionConciertoPageModule)
   }
+
 ];
 
 @NgModule({

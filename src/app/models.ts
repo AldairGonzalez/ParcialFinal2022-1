@@ -4,6 +4,9 @@ export interface Concierto{
   valorBoleta: number;
   valorTotal: number;
   fecha: Date;
+  hay:number;
+  faltante:number;
+  ganancias:number;
 }
 
 export interface Usuario{
@@ -13,4 +16,10 @@ export interface Usuario{
   correo:string;
   pass: string;
   image: string;
+}
+
+export interface Participante{
+  id:string;
+  nombre:string;
+  apellido:string;
 }
