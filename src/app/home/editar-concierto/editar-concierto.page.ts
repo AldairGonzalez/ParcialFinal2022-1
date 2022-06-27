@@ -64,33 +64,4 @@ export class EditarConciertoPage implements OnInit {
       alertaCreacionMensaje.backdropDismiss = false;
       await alertaCreacionMensaje.present();
     }
-
-    eliminarConcierto(){
-      this.alertaEliminacion();
-    }
-
-    async alertaEliminacion(){
-      const alertaCreacionMensaje = await this.alert.create({
-          header: "Confirmar Petición",
-          message: "¿Está seguro de querer eliminar este concierto?",
-          buttons:[
-            {
-              text:"Cancelar",
-              cssClass:"primary",
-              role:"cancel"
-            },
-            {
-            text: "Aceptar",
-            cssClass: "primary",
-            handler: (blah) => {
-              this.database.EliminarDocumento(this.enlace, this.concierto.id);
-              this.router.navigate(["/home"]);
-
-            }
-          }]
-      });
-      alertaCreacionMensaje.backdropDismiss = false;
-      await alertaCreacionMensaje.present();
-    }
-
 }

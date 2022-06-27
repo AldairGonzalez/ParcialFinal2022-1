@@ -35,4 +35,14 @@ export class FirestoreService {
   ObtenerId(){
    return this.database.createId();
   }
+
+  async ListarSubColecciones<tipo>(usuarioId:string){
+    const respuesta = this.database.collection<tipo>(`Usuarios/${usuarioId}/Conciertos`);
+    return respuesta.valueChanges();
+  }
+
+  async ObtenerSubColeccion<tipo>(usuarioId:string, docId:string){
+    const respuesta = this.database.collection<tipo>(`Usuarios/${usuarioId}/Conciertos`);
+    return respuesta.doc(docId).valueChanges();
+  }
 }
