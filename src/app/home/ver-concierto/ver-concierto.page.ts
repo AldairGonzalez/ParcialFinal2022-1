@@ -14,12 +14,18 @@ export class VerConciertoPage implements OnInit {
   concierto: Concierto={
     id: '',
     concierto: '',
+<<<<<<< HEAD
     valorBoleta:undefined,
     valorTotal: undefined,
     fecha: undefined,
     hay:undefined,
     faltante:undefined,
     ganancias:undefined
+=======
+    valorBoleta: 0,
+    valorTotal: 0,
+    fecha: undefined
+>>>>>>> parent of 9a79ab9 (Se terminó el parcial hablando en funcionalidad)
   };
   id: string;
   

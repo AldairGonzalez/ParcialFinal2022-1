@@ -16,10 +16,7 @@ export class CrearConciertoPage implements OnInit {
     concierto: '',
     valorBoleta: null,
     valorTotal: null,
-    fecha: new Date(),
-    hay: 0,
-    faltante:0,
-    ganancias:0
+    fecha: new Date()
   };
 
   private usuarioId:string = '';
