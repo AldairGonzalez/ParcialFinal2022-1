@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { Concierto } from 'src/app/models';
+import { FirebaseauthService } from 'src/app/services/firebaseauth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
@@ -13,32 +14,42 @@ export class EditarConciertoPage implements OnInit {
   concierto: Concierto={
     id: '',
     concierto: '',
-    valorBoleta: 0,
-    valorTotal: 0,
+    valorBoleta: undefined,
+    valorTotal: undefined,
     fecha: undefined,
-    hay:0,
-    faltante:0,
-    ganancias:0
+    hay:undefined,
+    faltante:undefined,
+    ganancias:undefined
   };
   id: string;
-  private enlace = "Conciertos/";
-  constructor(public database: FirestoreService, public activate: ActivatedRoute, public alert: AlertController, public loadingController: LoadingController, public router:Router) { }
+  usuarioId:string;
+  constructor(public database: FirestoreService, public activate: ActivatedRoute, public alert: AlertController, public loadingController: LoadingController, public router:Router, public auth: FirebaseauthService) {
+    this.id =  this.activate.snapshot.params['conciertoId'];
+    this.auth.estadoAutenticacion().subscribe(res => {
+      if (res !== null){
+        this.ObtenerConcierto(res.uid);
+        this.usuarioId = res.uid;
+      }
+    });
+   }
 
   ngOnInit() {
-    this.id =  this.activate.snapshot.params['conciertoId'];
-    this.concierto.id = this.id;
-    this.ObtenerConcierto();
   }
 
-  ObtenerConcierto(){
-    this.database.ObtenerDocumento<Concierto>(this.enlace, this.id).subscribe(res => {
-      this.concierto = res;
-     });
-    }
+  ObtenerConcierto(usuarioId:string){
+    console.log("UsuarioId = " + usuarioId + " DocId = " + this.id);
+     this.database.ObtenerSubColeccion<Concierto>(usuarioId, this.id).then(res => {
+    const respuesta = res.subscribe(doc => {
+      this.concierto = doc;
+    });
+  });
+  }
 
     editarConcierto(){
       this.presentLoading()
-      this.database.EditarDocumento(this.concierto, this.enlace, this.concierto.id);
+      const enlace = "Usuarios/" + this.usuarioId + "/Conciertos";
+      this.concierto.faltante = this.concierto.valorTotal;
+      this.database.EditarDocumento(this.concierto, enlace, this.concierto.id);
       this.alertaConfirmacion()
     }
 

@@ -53,6 +53,7 @@ export class CrearConciertoPage implements OnInit {
 
  async crearConcierto(){
     const url = "Usuarios/"+ this.usuarioId + "/Conciertos";
+    this.conciertoNuevo.faltante = this.conciertoNuevo.valorTotal;
     this.database.CrearDocumento(this.conciertoNuevo,url, this.conciertoNuevo.id)
     this.alertaCreacion();
   }

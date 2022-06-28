@@ -27,3 +27,14 @@
   align-items: center;
   justify-content: center;
 }
+
+.container-error-message{
+	padding: 3px;
+}
+
+.alert-danger{
+	color: #721c24;
+	background: #f8d7da;
+	border-color: #f5c6cb;
+	margin-bottom: 5px;
+}

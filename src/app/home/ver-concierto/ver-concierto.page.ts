@@ -14,21 +14,22 @@ export class VerConciertoPage implements OnInit {
   concierto: Concierto={
     id: '',
     concierto: '',
-    valorBoleta: 0,
-    valorTotal: 0,
+    valorBoleta:undefined,
+    valorTotal: undefined,
     fecha: undefined,
-    hay:0,
-    faltante:0,
-    ganancias:0
+    hay:undefined,
+    faltante:undefined,
+    ganancias:undefined
   };
   id: string;
+  
   private enlace = "Conciertos/";
   constructor(public database: FirestoreService, public activate: ActivatedRoute, public router:Router, public alert:AlertController, public auth:FirebaseauthService) {
     this.id =  this.activate.snapshot.params['conciertoId'];
     this.auth.estadoAutenticacion().subscribe(res => {
       if (res !== null){
+        console.log(res.uid + "HOLAAAAAAA");
         this.ObtenerConcierto(res.uid);
-        
       }
     });
    }
@@ -36,6 +37,7 @@ export class VerConciertoPage implements OnInit {
   }
 
   ObtenerConcierto(usuarioId:string){
+    console.log("UsuarioId = " + usuarioId + " DocId = " + this.id);
   this.database.ObtenerSubColeccion<Concierto>(usuarioId, this.id).then(res => {
     const respuesta = res.subscribe(doc => {
       this.concierto = doc;
