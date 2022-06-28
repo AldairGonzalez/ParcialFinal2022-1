@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home/ver-concierto"></ion-back-button>
+      <ion-back-button [routerLink]="['/home/ver-concierto', concierto.id]"></ion-back-button>
     </ion-buttons>
     <ion-title>Editar Concierto</ion-title>
   </ion-toolbar>

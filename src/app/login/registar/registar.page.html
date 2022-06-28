@@ -11,85 +11,57 @@
 
 <ion-content>
   <ion-card-content>
-    <form [formGroup]="FormularioRegistro">
-      <ion-grid class="grid">
-        <ion-row>
-          <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
-            <div><ion-label class="subtitulos">Nombre:</ion-label></div>
-          </ion-col>
-          <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
-            <div><input [(ngModel)]="usuario.nombre" formControlName="inputNombre" type="text" class="cajas"></div>
-            <div class="alert-danger" *ngIf="Nombre.invalid && (Nombre.dirty || Nombre.touched)">
-              <div class="container-error-message">
-                Debe ingresar el nombre
-              </div>
-            </div>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
-            <div><ion-label class="subtitulos">Apellido:</ion-label></div>
-          </ion-col>
-          <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
-            <div><input [(ngModel)]="usuario.apellido" formControlName="inputApellido" type="text" class="cajas"></div>
-            <div class="alert-danger" *ngIf="Apellido.invalid && (Apellido.dirty || Apellido.touched)">
-              <div class="container-error-message">
-                Debe ingresar el apellido
-              </div>
-            </div>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
-            <div><ion-label class="subtitulos">Correo:</ion-label></div>
-          </ion-col>
-          <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
-            <div><input [(ngModel)]="usuario.correo" formControlName="inputCorreo" type="email" class="cajas"></div>
-            <div class="alert-danger" *ngIf="Correo.invalid && (Correo.dirty || Correo.touched)">
-              <div class="container-error-message" *ngIf="Correo.errors.required">
-                Debe ingresar el correo
-              </div>
-              <div class="container-error-message" *ngIf="Correo.errors.pattern">
-                El correo es invalido
-              </div>
-            </div>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
-            <div><ion-label class="subtitulos">Contraseña:</ion-label></div>
-          </ion-col>
-          <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
-            <div><input [(ngModel)]="usuario.pass" formControlName="inputPass" type="password" class="cajas"></div>
-            <div class="alert-danger" *ngIf="Contrasena.invalid && (Contrasena.dirty || Contrasena.touched)">
-              <div class="container-error-message" *ngIf="Contrasena.errors.required">
-                Debe ingresar la contraseña
-              </div>
-              <div class="container-error-message" *ngIf="Contrasena.errors.minLength">
-                La contraseña debe de tener más de 6 caracteres
-              </div>
-            </div>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col sizeLg="2" sizeMd="2" sizeXs="2">
-            <ion-buttons>
-              <ion-button>
-                <label for="file-open" class="subtitulos">Imagen:<ion-icon name="images"></ion-icon></label>
-                <input (change)="NuevaImagen($event)" id="file-open" style="display:none;" type="file" accept="image/*">
-              </ion-button>
-            </ion-buttons>
-          </ion-col>
-          <ion-col sizeLg="10" sizeMd="10" sizeXs="10">
-            <ion-label class="subtitulos" *ngIf="usuario.image !== ''">¡Imagen Cargada Exitosamente!</ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
-            <div class="buttonGuardar"><ion-button (click)="registrar()">Guardar</ion-button></div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </form>
+    <ion-grid class="grid">
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Nombre:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><input [(ngModel)]="usuario.nombre" type="text" class="cajas"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Apellido:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><input [(ngModel)]="usuario.apellido" type="text" class="cajas"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Correo:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><input [(ngModel)]="usuario.correo" type="email" class="cajas"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><ion-label class="subtitulos">Contraseña:</ion-label></div>
+        </ion-col>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div><input [(ngModel)]="usuario.pass" type="password" class="cajas"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="2" sizeMd="2" sizeXs="2">
+          <ion-buttons>
+            <ion-button>
+              <label for="file-open" class="subtitulos">Imagen:<ion-icon name="images"></ion-icon></label>
+              <input (change)="NuevaImagen($event)" id="file-open" style="display:none;" type="file" accept="image/*">
+            </ion-button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col sizeLg="10" sizeMd="10" sizeXs="10">
+          <ion-label class="subtitulos" *ngIf="usuario.image !== ''">¡Imagen Cargada Exitosamente!</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+          <div class="buttonGuardar"><ion-button (click)="registrar()">Guardar</ion-button></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card-content>
 </ion-content>

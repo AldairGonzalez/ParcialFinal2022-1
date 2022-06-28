@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
 
   ingresar(){
     this.auth.login(this.user.correo,this.user.pass).then(res => {
-      this.navegar();
+      this.router.navigate(["/home"]);
     }).catch(error => {
       this.alertaCreacion();
     });
@@ -43,14 +43,6 @@ export class LoginPage implements OnInit {
     });
     alertaCreacionMensaje.backdropDismiss = false;
     await alertaCreacionMensaje.present();
-  }
-
-  async navegar(){
-    this.auth.estadoAutenticacion().subscribe(res => {
-      if(res.uid !== null){
-        this.router.navigate(["/home"]);
-      }
-    });
   }
 
 }

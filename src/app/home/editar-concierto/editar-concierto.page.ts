@@ -14,22 +14,16 @@ export class EditarConciertoPage implements OnInit {
   concierto: Concierto={
     id: '',
     concierto: '',
-<<<<<<< HEAD
-    valorBoleta: undefined,
-    valorTotal: undefined,
-    fecha: undefined,
-    hay:undefined,
-    faltante:undefined,
-    ganancias:undefined
-=======
     valorBoleta: 0,
     valorTotal: 0,
-    fecha: undefined
->>>>>>> parent of 9a79ab9 (Se terminó el parcial hablando en funcionalidad)
+    fecha: undefined,
+    hay:0,
+    faltante:0,
+    ganancias:0
   };
   id: string;
-  usuarioId:string;
-  constructor(public database: FirestoreService, public activate: ActivatedRoute, public alert: AlertController, public loadingController: LoadingController, public router:Router, public auth: FirebaseauthService) {
+  public usuarioId:string;
+  constructor(public database: FirestoreService, public activate: ActivatedRoute, public alert: AlertController, public loadingController: LoadingController, public router:Router, public auth:FirebaseauthService) {
     this.id =  this.activate.snapshot.params['conciertoId'];
     this.auth.estadoAutenticacion().subscribe(res => {
       if (res !== null){
@@ -43,19 +37,17 @@ export class EditarConciertoPage implements OnInit {
   }
 
   ObtenerConcierto(usuarioId:string){
-    console.log("UsuarioId = " + usuarioId + " DocId = " + this.id);
-     this.database.ObtenerSubColeccion<Concierto>(usuarioId, this.id).then(res => {
-    const respuesta = res.subscribe(doc => {
-      this.concierto = doc;
+    this.database.ObtenerSubColeccion<Concierto>(usuarioId, this.id).then(res => {
+      const respuesta = res.subscribe(doc => {
+        this.concierto = doc;
+      });
     });
-  });
-  }
+    }
 
     editarConcierto(){
+      const url = "Usuarios/" + this.usuarioId + "/Conciertos"; 
       this.presentLoading()
-      const enlace = "Usuarios/" + this.usuarioId + "/Conciertos";
-      this.concierto.faltante = this.concierto.valorTotal;
-      this.database.EditarDocumento(this.concierto, enlace, this.concierto.id);
+      this.database.EditarDocumento(this.concierto,url, this.concierto.id);
       this.alertaConfirmacion()
     }
 

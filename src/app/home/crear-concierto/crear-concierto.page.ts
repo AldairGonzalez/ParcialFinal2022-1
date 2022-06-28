@@ -16,7 +16,10 @@ export class CrearConciertoPage implements OnInit {
     concierto: '',
     valorBoleta: null,
     valorTotal: null,
-    fecha: new Date()
+    fecha: new Date(),
+    hay: 0,
+    faltante:0,
+    ganancias:0
   };
 
   private usuarioId:string = '';
@@ -50,7 +53,6 @@ export class CrearConciertoPage implements OnInit {
 
  async crearConcierto(){
     const url = "Usuarios/"+ this.usuarioId + "/Conciertos";
-    this.conciertoNuevo.faltante = this.conciertoNuevo.valorTotal;
     this.database.CrearDocumento(this.conciertoNuevo,url, this.conciertoNuevo.id)
     this.alertaCreacion();
   }

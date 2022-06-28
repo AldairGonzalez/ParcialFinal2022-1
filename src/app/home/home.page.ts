@@ -28,7 +28,6 @@ export class HomePage {
     this.database.ListarSubColecciones<Concierto>(usuarioId).then(res => {
       const subscribe = res.subscribe(collection => {
         this.conciertos = collection;
-        console.log(this.conciertos);
       });
     });
   }

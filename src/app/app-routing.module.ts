@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { GuardCanactivateGuard } from './guards/guard-canactivate.guard';
 
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
-    canActivate:[GuardCanactivateGuard]
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   }, 
   {
     path: '',

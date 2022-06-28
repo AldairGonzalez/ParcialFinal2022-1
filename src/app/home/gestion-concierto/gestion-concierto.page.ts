@@ -16,12 +16,12 @@ export class GestionConciertoPage implements OnInit {
   concierto: Concierto={
     id: '',
     concierto: '',
-    valorBoleta: undefined,
-    valorTotal: undefined,
+    valorBoleta: 0,
+    valorTotal: 0,
     fecha: undefined,
-    hay:undefined,
-    faltante:undefined,
-    ganancias:undefined
+    hay:0,
+    faltante:0,
+    ganancias:0
   };
   participantes:Participante[];
 

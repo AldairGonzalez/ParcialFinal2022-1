@@ -14,28 +14,21 @@ export class VerConciertoPage implements OnInit {
   concierto: Concierto={
     id: '',
     concierto: '',
-<<<<<<< HEAD
-    valorBoleta:undefined,
+    valorBoleta: undefined,
     valorTotal: undefined,
     fecha: undefined,
     hay:undefined,
     faltante:undefined,
     ganancias:undefined
-=======
-    valorBoleta: 0,
-    valorTotal: 0,
-    fecha: undefined
->>>>>>> parent of 9a79ab9 (Se terminó el parcial hablando en funcionalidad)
   };
   id: string;
-  
-  private enlace = "Conciertos/";
+  usuarioId: string;
   constructor(public database: FirestoreService, public activate: ActivatedRoute, public router:Router, public alert:AlertController, public auth:FirebaseauthService) {
     this.id =  this.activate.snapshot.params['conciertoId'];
     this.auth.estadoAutenticacion().subscribe(res => {
       if (res !== null){
-        console.log(res.uid + "HOLAAAAAAA");
         this.ObtenerConcierto(res.uid);
+        this.usuarioId = res.uid;
       }
     });
    }
@@ -43,7 +36,6 @@ export class VerConciertoPage implements OnInit {
   }
 
   ObtenerConcierto(usuarioId:string){
-    console.log("UsuarioId = " + usuarioId + " DocId = " + this.id);
   this.database.ObtenerSubColeccion<Concierto>(usuarioId, this.id).then(res => {
     const respuesta = res.subscribe(doc => {
       this.concierto = doc;
@@ -56,6 +48,7 @@ export class VerConciertoPage implements OnInit {
   }
 
   async alertaEliminacion(){
+    const url = "Usuarios/" + this.usuarioId + "/Conciertos";
     const alertaCreacionMensaje = await this.alert.create({
         header: "Confirmar Petición",
         message: "¿Está seguro de querer eliminar este concierto?",
@@ -69,7 +62,7 @@ export class VerConciertoPage implements OnInit {
           text: "Aceptar",
           cssClass: "primary",
           handler: (blah) => {
-            this.database.EliminarDocumento(this.enlace, this.concierto.id);
+            this.database.EliminarDocumento(url, this.concierto.id);
             this.router.navigate(["/home"]);
 
           }

@@ -3,6 +3,12 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/home/gestion-concierto', concierto.id]">
+        <ion-icon name="accessibility-outline"></ion-icon>
+        <label>Participantes</label>
+      </ion-button>
+    </ion-buttons>
     <ion-title>{{concierto.concierto}}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +20,7 @@
           <div><ion-label class="subtitulos">Valor Boleta:</ion-label></div>
         </ion-col>
         <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
-          <div><input type="number" value="concierto.valorBoleta" disabled="true" min="1" class="cajas"></div>
+          <div><ion-label class="cajas"> $ {{concierto.valorBoleta}}</ion-label></div>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -22,7 +28,7 @@
           <div><ion-label class="subtitulos">Valor Total:</ion-label></div>
         </ion-col>
         <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
-          <div><input type="number" value="concierto.valorTotal" min="1" disabled="true" class="cajas"></div>
+          <div><ion-label class="cajas"> $ {{concierto.valorTotal}}</ion-label></div>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -30,7 +36,7 @@
           <div><ion-label class="subtitulos">Fecha:</ion-label></div>
         </ion-col>
         <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
-          <div><input  type="date" value="concierto.fecha" disabled="true" min="1" class="cajas"></div>
+          <div><ion-label class="cajas">{{concierto.fecha}}</ion-label></div>
         </ion-col>
       </ion-row>
       <ion-row>
